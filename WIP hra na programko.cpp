@@ -6,11 +6,24 @@ int poskozeni = rand();
 //cout << jmeno << "zpusobil" << poskozeni << "poskozeni"<< endl;
 //cout << enemyname << "má teï" << nepritelzivoty << endl;}
 }
+//void udersvetlem
+//void oziveni
+//void vceliul
+//void smriticisip
+//void past
+//void krvavyritual
+//void kletba
+//void ohnivakoule
+//void magickabariera
+//tree = random sance na appearance = 50% nic 40% jablko -> jablko healuje, 10% vceli -> ul utoci a ubere zivoty
+//vesnice = dokoupit itemy :3
+//inventar 5 mist
+
 
 int main(){
-    string jmeno, paladin, lovec, mag, warlock, enemyname, enemyname2, enemyname3, decision2 = "Ne", klasa, udersvetlem, oziveni, jablko, vceliul, smrticisip, past, krvavyritual, kletba, ohnivakoule, magickabariera, specialmove1, specialmove2; //takhle psat utoky je trosku dlouhe ale neco figuretnu out :"3
+    string jmeno, enemyname, enemyname2, enemyname3, decision2 = "Ne", specialmove1, specialmove2; //takhle psat utoky je trosku dlouhe ale neco figuretnu out :"3
     float maxzivoty, zivoty, maxenergie, energie, penize, utok, nepritelzivoty;
-    int level, decision1;
+    int level, decision1, prachy;
     float placeholderproutok;
     float klasyy[4][3]={
     {5, 3, 5}, //paladin
@@ -18,8 +31,9 @@ int main(){
     {5, 3, 5}, //warlock
     {3, 2, 6} //mag
     };
+    string inventar[5] = {};
 
-    //hrac = {}
+    //hrac = {} mozna zbytecne lol
 
     cout << "Jak se chcete jmenovat?: ";
     cin >> jmeno;
@@ -38,13 +52,13 @@ case 1:
     cout << "Chcete si vybrat Paladina?";
     cin >> decision2;
     if(decision2 == "Ano"){
-    klasa == paladin;
     maxzivoty = klasyy[0][0];
     utok = klasyy[0][1];
     energie = klasyy[0][2];
-    specialmove1 = udersvetlem;
-    specialmove2 = oziveni;
-    } //nejspise vymazu paladin, warlock, mag a lovec ale uvidim :p
+    //specialmove1 = udersvetlem;
+    //specialmove2 = oziveni;
+    cout << "Vybrali jste si Paladina.";
+    }
     else {}
     break;
 case 2:
@@ -58,12 +72,13 @@ case 2:
     cout << "Chcete si vybrat Lovce?";
     cin >> decision2;
     if(decision2 == "Ano"){
-    klasa == lovec;
     maxzivoty = klasyy[1][0];
     utok = klasyy[1][1];
     energie = klasyy[1][2];
-    specialmove1 = smrticisip;
-    specialmove2 = past;}
+    //specialmove1 = smrticisip;
+    //specialmove2 = past;
+     cout << "Vybrali jste si Lovce.";
+     }
     else {}
     break;
 case 3:
@@ -77,12 +92,12 @@ case 3:
     cout << "Chcete si vybrat Warlocka?";
     cin >> decision2;
     if(decision2 == "Ano"){
-    klasa == warlock;
     maxzivoty = klasyy[2][0];
     utok = klasyy[2][1];
     energie = klasyy[2][2];
-    specialmove1 = krvavyritual;
-    specialmove2 = kletba;}
+    //specialmove1 = krvavyritual;
+    //specialmove2 = kletba;
+    cout << "Vybrali jste si Warlocka.";}
     else {}
     break;
 case 4:
@@ -96,12 +111,12 @@ case 4:
     cout << "Chcete si vybrat Maga?";
     cin >> decision2;
     if(decision2 == "Ano"){
-    klasa == mag;
     maxzivoty = klasyy[3][0];
     utok = klasyy[3][1];
     energie = klasyy[3][2];
-    specialmove1 = ohnivakoule;
-    specialmove2 = magickabariera;}
+    //specialmove1 = ohnivakoule;
+    //specialmove2 = magickabariera;
+     cout << "Vybrali jste si Maga.";}
     else{}
     break;
 default:
