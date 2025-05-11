@@ -8,6 +8,17 @@ int poskozeni = rand();
 }
 //void udersvetlem
 //void oziveni
+void oziveni(float &zivoty, int mxzivoty, int mana){
+    if(mana < 1){
+        cout << "Nemas dostatek many";
+    }
+    else if (zivoty < mxzivoty){
+            zivoty =+ 1;
+        cout << "Pridal sis jeden zivot yipee!";}
+    else{
+        cout << "Mas plne zivoty broski";
+    }
+    }
 //void vceliul
 //void smriticisip
 //void past
