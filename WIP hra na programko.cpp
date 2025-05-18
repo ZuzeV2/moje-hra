@@ -11,7 +11,7 @@ int generovaniEnemies(){
     int sance = rand()% 3 + 1;
 }
 
-bool GameOver(&zzivoty, string Inventar[5],int mxxziovty){
+bool GameOver(int &zzivoty, string Inventar[5],int mxxziovty){
      for (int i = 0; i < 5; i++){
         if(Inventar[i] == "Revive"){
             cout << "Jste oziveny";
@@ -54,7 +54,7 @@ else if(sance < 90){
 }
 else{
     cout << "Spadl vceli ul, -2 zivoty rip..\n";
-    zzivoty =- 2;
+    zzivoty -= 2;
     if(zzivoty < 0){
         zzivoty = 0;
     }
@@ -242,8 +242,6 @@ default:
 for(int level = 1; level <= 15; level++){
 
     generujLevel(level, zivoty, inventar, maxzivoty);
-
-    generujLevel(level, zivoty, inventar);
 
     cout << "\n";
 }
