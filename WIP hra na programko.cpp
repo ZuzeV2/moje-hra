@@ -10,6 +10,7 @@ srand(time(0));
 int generovaniEnemies(){
     int sance = rand()% 3 + 1;
 }
+
 bool GameOver(&zzivoty, string Inventar[5],int mxxziovty){
      for (int i = 0; i < 5; i++){
         if(Inventar[i] == "Revive"){
@@ -23,6 +24,7 @@ bool GameOver(&zzivoty, string Inventar[5],int mxxziovty){
         }
      }
 }
+
 //jestli strom se objevi
 bool StromAppearance(){
 int sance = rand() % 100 + 1;
@@ -60,6 +62,7 @@ else{
 
 }
 //gen level
+
 void generujLevel(int Level, int &Zivoty, string Inventar[5], int mxziovty){
     cout << "Level: " << Level << "\n";
     if(Zivoty <= 0){
@@ -70,6 +73,11 @@ void generujLevel(int Level, int &Zivoty, string Inventar[5], int mxziovty){
         }
 
     }
+
+void generujLevel(int Level, int &Zivoty, string Inventar[5]){
+    cout << "Level: " << Level << "\n";
+
+
     //gen stromu
     if(StromAppearance()){
         cout << "Nasel si strom! Mozna neco z neho dostanes.. \n";
@@ -232,7 +240,11 @@ default:
  }while (!(decision2 == "Ano"));
 
 for(int level = 1; level <= 15; level++){
+
     generujLevel(level, zivoty, inventar, maxzivoty);
+
+    generujLevel(level, zivoty, inventar);
+
     cout << "\n";
 }
 }
