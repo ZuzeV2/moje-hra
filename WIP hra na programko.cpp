@@ -1,19 +1,106 @@
 #include <iostream>
+#include <ctime>
+#include <string>
 using namespace std;
+//nahodne cislo generator
+void Randomizer(){
+srand(time(0));
+}
+//kolik enemies
+int generovaniEnemies(){
+    int sance = rand()% 3 + 1;
+}
+bool GameOver(&zzivoty, string Inventar[5],int mxxziovty){
+     for (int i = 0; i < 5; i++){
+        if(Inventar[i] == "Revive"){
+            cout << "Jste oziveny";
+            zzivoty = mxxziovty;
+            return false;
+        }
+        else{
+            cout << "Sorry, nemas zadny revives";
+            return true;
+        }
+     }
+}
+//jestli strom se objevi
+bool StromAppearance(){
+int sance = rand() % 100 + 1;
+return sance < 20;
+}
+//co spadne ze stromu
+void stromFall(int &zzivoty,string Inventar[5]){
+int sance = rand() % 100 + 1;
 
+if(sance < 70){
+    cout << "Nic nespadlo ze stromu sorry broski. \n";
+}
+else if(sance < 90){
+    cout << "Spadlo jablko yipee!!\n";
+    bool pridano = false;
+    for (int i = 0; i < 5; i++){
+        if(Inventar[i].empty()){
+            Inventar[i] = "Jablko";
+            cout << "Jablko pridano na pozici: " << i + 1 << ".\n";
+            pridano = true;
+            break;
+        }
+    }
+    if(!pridano){
+        cout << "Inventar je plny!! :/.\n";
+    }
+}
+else{
+    cout << "Spadl vceli ul, -2 zivoty rip..\n";
+    zzivoty =- 2;
+    if(zzivoty < 0){
+        zzivoty = 0;
+    }
+}
+
+}
+//gen level
+void generujLevel(int Level, int &Zivoty, string Inventar[5], int mxziovty){
+    cout << "Level: " << Level << "\n";
+    if(Zivoty <= 0){
+        Zivoty = 0;
+        GameOver(Zivoty, Inventar, mxziovty);
+        if (GameOver){
+            cout << "Sorry prohral jsi";
+        }
+
+    }
+    //gen stromu
+    if(StromAppearance()){
+        cout << "Nasel si strom! Mozna neco z neho dostanes.. \n";
+        string decision22;
+        cout << "Chces k nemu pristoupit? (a/n): ";
+        cin >> decision22;
+        if (decision22 == "a" || decision22 == "A"){
+            cout << "Pristupujes ke stromu..\n";
+            stromFall(Zivoty, Inventar);
+        }
+        else{
+            cout << "Asi nemas rad stromy..\n";
+        }
+    }
+    else{}
+}
+// crappy utok wip
 void utok(int &utocnik,int &cil){
-int poskozeni = rand();
+float poskozeni = rand();
 //cout << jmeno << "zpusobil" << poskozeni << "poskozeni"<< endl;
-//cout << enemyname << "má teï" << nepritelzivoty << endl;}
+//cout << enemyname << "mï¿½ teï¿½" << nepritelzivoty << endl;}
 }
 //void udersvetlem
-//void oziveni
-void oziveni(float &zivoty, int mxzivoty, int mana){
+//oziveni
+void oziveni(float &zivoty, int mxzivoty, int &mana){
     if(mana < 1){
         cout << "Nemas dostatek many";
     }
     else if (zivoty < mxzivoty){
             zivoty =+ 1;
+            mana =- 1;
         cout << "Pridal sis jeden zivot yipee!";}
     else{
         cout << "Mas plne zivoty broski";
@@ -32,9 +119,10 @@ void oziveni(float &zivoty, int mxzivoty, int mana){
 
 
 int main(){
+    Randomizer();
     string jmeno, enemyname, enemyname2, enemyname3, decision2 = "Ne", specialmove1, specialmove2; //takhle psat utoky je trosku dlouhe ale neco figuretnu out :"3
     float maxzivoty, zivoty, maxenergie, energie, penize, utok, nepritelzivoty;
-    int level, decision1, prachy;
+    int decision1, prachy;
     float placeholderproutok;
     float klasyy[4][3]={
     {5, 3, 5}, //paladin
@@ -117,7 +205,7 @@ case 4:
     cout << "Mana: 6/6" << endl;
     cout << "Utok - Magicksy projektil za 2 poskozeni" << endl;
     cout << "Ohniva koule - Zasahne jednoho nepritele za 6 poskozeni (stoji 3 many)" << endl;
-    cout << "Magicka bariera – Na 1 kolo zcela pohlti prvni utok, ktery by zasahl Maga (stoji 2 many)" << endl;
+    cout << "Magicka bariera ï¿½ Na 1 kolo zcela pohlti prvni utok, ktery by zasahl Maga (stoji 2 many)" << endl;
 
     cout << "Chcete si vybrat Maga?";
     cin >> decision2;
@@ -133,13 +221,18 @@ case 4:
 default:
     cout << "spatne cislo bro";
     break;}
-//Min. poèet monster: 16
-//Min. poèet mini-bossù: 2
-//Min. poèet hlavních bossù: 1
-//Min. poèet vesnic: 2
+//Min. poï¿½et monster: 16
+//Min. poï¿½et mini-bossï¿½: 2
+//Min. poï¿½et hlavnï¿½ch bossï¿½: 1
+//Min. poï¿½et vesnic: 2
 
-//Min. jedenkrát musí hráè bojovat proti: 1 monstru v jednom setkání.
-//Min. jedenkrát musí hráè bojovat proti: 2 monstrùm v jednom setkání.
-//Min. jedenkrát musí hráè bojovat proti: 3 monstrùm v jednom setkání.
+//Min. jedenkrï¿½t musï¿½ hrï¿½ï¿½ bojovat proti: 1 monstru v jednom setkï¿½nï¿½.
+//Min. jedenkrï¿½t musï¿½ hrï¿½ï¿½ bojovat proti: 2 monstrï¿½m v jednom setkï¿½nï¿½.
+//Min. jedenkrï¿½t musï¿½ hrï¿½ï¿½ bojovat proti: 3 monstrï¿½m v jednom setkï¿½nï¿½.
  }while (!(decision2 == "Ano"));
+
+for(int level = 1; level <= 15; level++){
+    generujLevel(level, zivoty, inventar, maxzivoty);
+    cout << "\n";
+}
 }
