@@ -11,6 +11,40 @@ int generovaniEnemies(){
     int sance = rand()% 3 + 1;
 }
 
+void vesniceGenerovani(float &zivotyx, float mxzivotyx,string invntar[5], float &penizze){
+    int volba, volba2
+    do{
+    do{
+    cout << "Vitej ve vesnici! \n";
+    cout << "1 - Doplnit zivoty (zdarma) \n";
+    cout << "2 - Jit do obchodu \n";
+    cout << "3 - Odejit \n";
+    cin >> volba;
+    }while(!(volba == 1 || volba == 2 || volba == 3));
+
+    switch(volba){
+case 1 :
+    zivotyx = mxzivotyx;
+    cout << "Vsechny zivoty byli obnoveny \n";
+    break;
+case 2:
+    do{
+        cout << "1 - Susenka: +? HP \n";
+        cout << "2 - Revive: ozivi te kdybys zemrel \n";
+        cout << "3 - Alkohol: +? many \n";
+        cout << "4 - Magicky potion: +? HP a +? many \n";
+        cout << "5 - Nic: nic to nedela, tohle nekupuj pls \n";
+        cin >> volba2;
+    }while(!(volba >= 1 && volba 2 <= 5));
+    switch(volba2){
+    case: 1
+        //doplnim jsem lazy
+        }
+
+    }
+}
+}
+
 bool GameOver(int &zzivoty, string Inventar[5],int mxxziovty){
      for (int i = 0; i < 5; i++){
         if(Inventar[i] == "Revive"){
@@ -24,7 +58,6 @@ bool GameOver(int &zzivoty, string Inventar[5],int mxxziovty){
         }
      }
 }
-
 //jestli strom se objevi
 bool StromAppearance(){
 int sance = rand() % 100 + 1;
@@ -63,8 +96,10 @@ else{
 }
 //gen level
 
-void generujLevel(int Level, int &Zivoty, string Inventar[5], int mxziovty){
+void generujLevel(int Level, float &Zivoty, string Inventar[5], float mxzivoty){
     cout << "Level: " << Level << "\n";
+
+    //game over
     if(Zivoty <= 0){
         Zivoty = 0;
         GameOver(Zivoty, Inventar, mxziovty);
@@ -74,9 +109,11 @@ void generujLevel(int Level, int &Zivoty, string Inventar[5], int mxziovty){
 
     }
 
-void generujLevel(int Level, int &Zivoty, string Inventar[5]){
-    cout << "Level: " << Level << "\n";
+    //vesnice
+    if(Level == 3 || Level == 6 || Level == 11 || Level == 13 || Level == 15 || Level == 19){
+       vesniceGenerovani();
 
+    }
 
     //gen stromu
     if(StromAppearance()){
@@ -114,16 +151,13 @@ void oziveni(float &zivoty, int mxzivoty, int &mana){
         cout << "Mas plne zivoty broski";
     }
     }
-//void vceliul
 //void smriticisip
 //void past
 //void krvavyritual
 //void kletba
 //void ohnivakoule
 //void magickabariera
-//tree = random sance na appearance = 50% nic 40% jablko -> jablko healuje, 10% vceli -> ul utoci a ubere zivoty
 //vesnice = dokoupit itemy :3
-//inventar 5 mist
 
 
 int main(){
